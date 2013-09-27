@@ -1,6 +1,6 @@
 SYTW - PRÁCTICA 02
 ==================
-# Webpage with Rack #
+## Webpage with Rack ##
 
 
 * Alumno: José Alberto Pérez Melián
