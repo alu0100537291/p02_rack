@@ -1,7 +1,7 @@
 SYTW - PRÁCTICA 02
 ==================
-Webpage with Rack
------------------
+# Webpage with Rack #
+
 
 * Alumno: José Alberto Pérez Melián
 * E-mail: alu0100537291[AT]ull.edu.es
@@ -14,7 +14,7 @@ Aplicación Rack que muestra en una página web los últimos tweets de un usuari
 ¡IMPORTANTE!
 ------------
 
-Recuerde configurar el fichero	configure.rb con:
+Recuerde configurar el fichero `configure.rb` con:
    * Clave y secreto del consumidor
    * OAUTH token
    * OAUTH secret token
