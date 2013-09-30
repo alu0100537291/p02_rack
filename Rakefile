@@ -1,3 +1,3 @@
 task :default do
-   sh "ruby popular.rb japmelian 5"
+   sh "ruby web_list.rb"
 end
