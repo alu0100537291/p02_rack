@@ -2,31 +2,23 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>USER TIMELINE</title>
+		<title>Rack::Response</title>
 	</head>
 
 	<body>
- 		<p><b>LAST USER TWEETS</b></p>
+	 	<p><b>PRÁCTICA 2</b></p>
 
-	 	<form action="/" method="post">
-		   	<p><b>Twitter username: </b></p><input type="text" name="firstname"  value="" autofocus>
-		   	<p><b>Number of tweets to show: </b></p><input type="text" name="n" value="1">
-		   	<input type="submit" value="Submit" >
+		<form action="/" method="post">
+			<p><b>        USERNAME </b></p><input type="text" name="firstname"  value="" autofocus>
+			<p><b>HOW MANY TWEETS? </b></p><input type="text" name="n" value="0">
+			<input  type="submit" value="Submit" >
 		</form>
 
-		<% if @name == ''%>
-			<p id="warning"> ERROR! </p>
-		<%else%>
-			<p><b> Usuario <%= @name %></b></p>
-		<%end %>
-				
-		<% if @name != ''%>
-			<%if @todo_tweet.length < @number %>
-				<p>USER LAST <%= @number %> TWEETS</p>
-				<ol>
-					<% @todo_tweet.each do |i| %> 
-						<li id="col"><%= i %><br></li>
+		<p>Sus úlimos <%= @number %> Tweets :</p>
+		<ol>
+			<% @todo_tweet.each do |i| %> 
+				<li id="col"><%= i %><br></li>
 			<% end %>
-		<%end%>
+		</ol>
 	</body>
 </html>

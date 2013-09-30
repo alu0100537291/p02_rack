@@ -1,42 +1,56 @@
+# -*- coding: utf-8 -*-
 require 'twitter'
+require './configure'
 require 'rack'
-require 'erb'
 require 'pry-debugger'
 require 'thin'
-require './configure'
+require 'erb'
 
-class WebList
+class Twitts
+
+  #Inicializar variables
   def initialize
-    @all_tweets = [] # Array where all tweets will be saved
-    @name = ''       # Username
-    @number = 0      # Number of tweets to show
+    @todo_tweet = []
+    @name = ''
+    @number = 0   
   end
 
+  #Acceso al HTML para mostrar los resultados
   def erb(template)
-    template_file = File.open("web_list.html.erb", 'r')
-    ERB.new(File.read(template_file)).result(binding)
+      template_file = File.open("web_list.html.erb", 'r')
+      ERB.new(File.read(template_file)).result(binding)
   end
 
+  #Método call
   def call env
-    req = Rack::Request.new(env)
-    
-    binding.pry if ARGV[0]
+      req = Rack::Request.new(env)
 
-    @name = (req["firstname"] && req["firstname"] != '' && Twitter.user?(req["firstname"]) == true ) ? req["firstname"] : ''
+      binding.pry if ARGV[0]
+
+     #Si no esta vacio , no es un espacio y el usuario existe en Twitter el nombre es el introducido
+      @name = (req["firstname"] && req["firstname"] != '' && Twitter.user?(req["firstname"]) == true ) ? req["firstname"] : ''
 
     @number = (req["n"] && req["n"].to_i>1 ) ? req["n"].to_i : 1
 
+    #Si el nombre existe buscamos sus últimos Tweets
     if @name == req["firstname"]
       ultimos_t = Twitter.user_timeline(@name,{:count=>@number.to_i})
       @todo_tweet =(@todo_tweet && @todo_tweet != '') ? ultimos_t.map{ |i| i.text} : ''       
     end
 
-    Rack::Response.new(erb('twitter.html.erb'))
+    #Invoca a erb
+    Rack::Response.new(erb('web_list.html.erb'))
   end
+
 end
 
-Rack::Server.start(
-  :app => WebList.new,
-  :Port => 9292,
-  :server => 'thin'
-)
+if $0 == __FILE__
+  Rack::Server.start(
+#     :app => Rack::ShowExceptions.new(
+#         Rack::Lint.new(
+#             Rack::Twitts.new)), 
+    :app => Twitts.new,
+      :Port => 9292,
+      :server => 'thin'
+    )
+end
