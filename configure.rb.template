@@ -1,0 +1,6 @@
+Twitter.configure do |config|
+  config.consumer_key = "FILL"
+  config.consumer_secret = "FILL"
+  config.oauth_token = 'FILL'
+  config.oauth_token_secret = 'FILL'
+end
