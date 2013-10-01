@@ -18,4 +18,5 @@ Recuerde configurar el fichero `configure.rb.template` con:
    * Clave y secreto del consumidor
    * OAUTH token
    * OAUTH secret token
-Ésto lo podrá hacer dando de alta la aplicación en http://dev.twitter.com
+
+- Ésto lo podrá hacer dando de alta la aplicación en http://dev.twitter.com
