@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				
+		<title>Rack::Response</title>
+	</head>
+
+	<body>
+	 	<form action="/" method="post">
+			<p><b>Introduzca su nombre en Twitter: </b></p><input type="text" name="firstname"  value="" autofocus>
+			<p><b>Desea ver más. ¿Cuántos Tweets desea ver? </b></p><input type="text" name="n" value="1">
+			<input  type="submit" value="Submit" >
+		</form>
+
+		<p>Sus úlimos <%= @number %> Tweets :</p>
+		<ol>
+			<% @todo_tweet.each do |i| %> 
+			<li id="col"><%= i %><br></li>
+			<% end %>
+		</ol>
+	</body>
+</html>
